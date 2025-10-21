@@ -37,7 +37,7 @@ class Availability < ApplicationRecord
 
   validates :start_dow, :end_dow, inclusion: { in: DOW.values }
   validates :start_time, :end_time, presence: true
-  validates :end_time, comparison: { greater_than: :start_time }
+  validates :end_time, comparison: { greater_than: :start_time }, if: -> { end_dow == start_dow }
   validates :end_dow, comparison: { greater_than_or_equal_to: :start_dow }
   validates :source, presence: true, inclusion: { in: %w[calendly] }
   validates :external_id, presence: true, uniqueness: { scope: %i[provider_id source] }

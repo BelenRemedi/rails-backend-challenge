@@ -15,4 +15,9 @@
 class Provider < ApplicationRecord
   has_many :availabilities, dependent: :destroy
   has_many :appointments, dependent: :destroy
+
+  def time_zone
+    # For simplicity, all providers are assumed to be in the system time zone."
+    Time.zone.name
+  end
 end

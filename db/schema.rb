@@ -12,8 +12,7 @@
 
 ActiveRecord::Schema[8.0].define(version: 2025_10_12_204828) do
   create_table "appointments", force: :cascade do |t|
-    t.integer "status", null: false
-    t.integer "{scheduled: 0, completed: 1, canceled: 2}", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "start_date", null: false
     t.datetime "end_date", null: false
     t.integer "provider_id", null: false
